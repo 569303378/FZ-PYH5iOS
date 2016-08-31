@@ -20,8 +20,17 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.myWebView.delegate = self;
+    //适应屏幕
+//    self.myWebView.scalesPageToFit = YES;
+//    //解决iOS9.2以上黑边问题
+    self.myWebView.opaque = NO;
+    
+    //关闭多点触控
+    self.myWebView.multipleTouchEnabled = YES;
+    //加载网页中的电话号码，单击可以拨打
+    self.myWebView.dataDetectorTypes = YES;
 //1.加载网页
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.jianshu.com"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
     [self.myWebView loadRequest:request];
     
    //2. 加载本地html文件，在iphone项目里面
@@ -36,6 +45,8 @@
 }
 
 #pragma mark = web代理
+
+
 //开始加载的时候执行该方法。
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
